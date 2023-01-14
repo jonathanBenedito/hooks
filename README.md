@@ -3,3 +3,61 @@
 
 🖼 Link de <a href="https://splendorous-zuccutto-f119a5.netlify.app/">demonstração</a>.
 
+- `useState()`
+    
+    Usando estado dentro de **componente de classe**.
+    
+    ```jsx
+    class DeckOfCards extends Component {
+        constructor(){
+            super()
+            this.state = {
+                cards: []
+            }
+        }
+    
+        async componentDidMount(){
+            const deckId = await createDeck()
+            const data = await getCards(deckId)
+    
+            this.setState({
+                cards: data.cards
+            })
+        }
+    ```
+    
+    Usando estado dentro de **componente de função**.
+    
+    ```jsx
+    function Example() {
+    
+    const [count, setCount] = useState(0)
+    
+    return (
+    	<div>
+    		<p>You clicked {count} times</p>
+    		<button onClick={() => setCount(count + 1)}>
+    			Click me
+    		</button>
+    	</div>
+    )
+    
+    ```
+    
+- `useEffect()`
+    
+    Permite você usar efeitos colaterais nos componentes de funções.
+    
+    ```jsx
+    useEffect(() => {
+        const fetchData = async () => {
+            const deckId = await createDeck()
+            const data = await getCards(deckId)
+    
+            setDeck({
+                cards: data.cards
+            })
+        }
+        fetchData()
+    }, [])
+    ```
